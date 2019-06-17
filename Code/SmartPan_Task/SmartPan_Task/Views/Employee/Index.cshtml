@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Domain.EmployeesTasks>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Employee_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Task)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            @if (item.TaskId == 1)
+            {
+            <td>
+                edit
+            </td>
+            }
+            @if (item.TaskId == 2)
+            {
+            <td>
+                add
+            </td>
+            }
+            @if (item.TaskId == 3)
+            {
+            <td>
+                delete
+            </td>
+            }
+            @if (item.TaskId == 4)
+            {
+            <td>
+                search
+            </td>
+            }
+
+
+            @if (item.TaskStatusId == 1)
+            {
+                <td>
+                    Pending
+                </td>
+            }
+            @if (item.TaskStatusId == 2)
+            {
+                <td>
+                    Committed
+                </td>
+            }
+            @if (item.TaskStatusId == 3)
+            {
+                <td>
+                    Closed
+                </td>
+            }
+            @if (item.TaskStatusId == 4)
+            {
+                <td>
+                    Completed
+                </td>
+            }
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" value="s">Edit</a>
+                
+                @*<a asp-action="Details" asp-route-id="@item.TaskId">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

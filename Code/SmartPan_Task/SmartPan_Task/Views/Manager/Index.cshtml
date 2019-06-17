@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Domain.EmployeesTasks>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Manager_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Emp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emp.EmpFname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskStatus.TaskStatus1)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,87 @@
+﻿@model Domain.Employees
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+
+}
+<h1>Index</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="container-fluid">
+    @Html.ValidationMessage("CustomError", "", new { @class = "text-danger" })
+        </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpFname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpLname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpSalary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dep)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Manager)
+                </th>
+                <th>
+                    Manager Full Name
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="center" style="text-align: center; vertical-align: middle;">
+                    @Html.DisplayFor(modelItem => Model.EmpFname)
+                </td>
+                <td align="center" style="text-align: center; vertical-align: middle;">
+                    @Html.DisplayFor(modelItem => Model.EmpLname)
+                </td>
+                <td align="center" style="text-align: center; vertical-align: middle;">
+                    @Html.DisplayFor(modelItem => Model.EmpSalary)
+                </td>
+                <td align="center" style="text-align: center; vertical-align: middle;">
+                    <img width="150px" height="150px" src="@Model.EmpImage"
+                         asp-append-version="true" alt="@Model.EmpImage" />
+                </td>
+                <td align="center" style="text-align: center; vertical-align: middle;">
+                    @Html.DisplayFor(modelItem => Model.Dep.DepName)
+                </td>
+                <td align="center" style="text-align: center; vertical-align: middle;">
+                    @Html.DisplayFor(modelItem => Model.EmpFname)
+                </td>
+                <td align="center" style="text-align: center; vertical-align: middle;">
+                    @Html.DisplayFor(modelItem => Model.Manager.EmpFname)
+                </td>
+                <td align="center" style="text-align: center; vertical-align: middle;">
+                    @{
+                        var fullName = Model.EmpFname + " " + Model.EmpLname;
+                        @Html.DisplayFor(m => fullName)
+
+                    }
+                </td>
+                <td align="center" style="text-align: center; vertical-align: middle;">
+                    <p>
+                        <a asp-action="Edit" asp-route-id="@Model.EmpId">Edit</a> <br />
+                        <a asp-action="Details" asp-route-id="@Model.EmpId">Details</a> <br />
+                        <a asp-action="Delete" asp-route-id="@Model.EmpId">Delete</a>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>

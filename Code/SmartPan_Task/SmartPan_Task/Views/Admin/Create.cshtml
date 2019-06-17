@@ -1,0 +1,61 @@
+﻿@model Domain.Employees
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Employees</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="EmpId" class="control-label"></label>
+                <select asp-for="EmpId" class ="form-control" asp-items="ViewBag.EmpId"></select>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="EmpFname" class="control-label"></label>
+                <input asp-for="EmpFname" class="form-control" />
+                <span asp-validation-for="EmpFname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpLname" class="control-label"></label>
+                <input asp-for="EmpLname" class="form-control" />
+                <span asp-validation-for="EmpLname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpSalary" class="control-label"></label>
+                <input asp-for="EmpSalary" class="form-control" />
+                <span asp-validation-for="EmpSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpImage" class="control-label"></label>
+                <input type="file" name="file" />
+                <span asp-validation-for="EmpImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManagerId" class="control-label"></label>
+                <select asp-for="ManagerId" class ="form-control" asp-items="ViewBag.ManagerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepId" class="control-label"></label>
+                <select asp-for="DepId" class ="form-control" asp-items="ViewBag.DepId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
